@@ -1,0 +1,4 @@
+*.pyc
+.idea/
+example/db.sqlite3
+example/src/

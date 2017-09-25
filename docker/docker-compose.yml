@@ -1,0 +1,20 @@
+version: "3"
+services:
+  rabbitmq:
+    image: rabbitmq:3.6.8-management
+  django:
+    image: django:dev
+    build:
+      context: ..
+      dockerfile: ./docker/images/django/Dockerfile
+    volumes:
+      - '../example:/usr/local/code'
+  celery:
+    image: django:dev
+    command: 'celery --concurrency=1 -A example worker -B --loglevel DEBUG -s /tmp/celerybeat-schedule'
+    environment:
+      - 'C_FORCE_ROOT=1'
+    volumes:
+      - '../example:/usr/local/code'
+    depends_on:
+      - rabbitmq
