@@ -124,12 +124,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CELERY_BROKER_URL = 'amqp://guest:guest@rabbitmq:5672//'
-CELERY_BEAT_SCHEDULE = {
-    'tasks_test': {
-        'task': 'example.celery.debug_task',
-        'schedule': crontab()
-    }
-}
+# CELERY_BEAT_SCHEDULE = {
+#     'tasks_test': {
+#         'task': 'example.celery.debug_task',
+#         'schedule': crontab()
+#     }
+# }
 
 CELERY_TASK_PROTOCOL = 1
 

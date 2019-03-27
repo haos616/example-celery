@@ -1,4 +1,5 @@
 pip-tools
 
-Django==1.9.13
--e git+https://github.com/celery/celery.git@9a1064e71b753c9195efa0d83f52556794e5f8ef#egg=celery
+Django==1.11.20
+celery==4.1.1
+flower

@@ -20,3 +20,8 @@ app.autodiscover_tasks()
 @app.task(bind=True)
 def debug_task(self):
     print('Request: {0!r}'.format(self.request))
+
+
+@app.task(autoretry_for=(Exception,), retry_kwargs={'max_retries': 5, 'countdown': 2})
+def retry_task():
+    raise Exception('Run exception')
